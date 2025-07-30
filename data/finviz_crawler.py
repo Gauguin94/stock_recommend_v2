@@ -50,15 +50,15 @@ def get_fundamental(df):
 
         try:
             fper, per, pbr, roe, roa, eps = str2float(data)
-            ticker_list = elem.ticker
-            sec_list = elem.sector
-            ind_list = elem.industry
-            fper_list = fper
-            per_list = per
-            pbr_list = pbr
-            roe_list = roe
-            roa_list = roa
-            eps_list = eps
+            ticker_list.append(elem.ticker)
+            sec_list.append(elem.sector)
+            ind_list.append(elem.industry)
+            fper_list.append(fper)
+            per_list.append(per)
+            pbr_list.append(pbr)
+            roe_list.append(roe)
+            roa_list.append(roa)
+            eps_list.append(eps)
 
             # === 국가 추출 부분 ===
             country_tag = soup.select_one("div.quote-links a[href*='geo_']")
@@ -72,8 +72,18 @@ def get_fundamental(df):
             time.sleep(1)
             continue
 
+    df = pd.DataFrame(
+        columns = [
+            'ticker', 'sector', 'industry',
+            'Forward_PER', 'PER',
+            'PBR', 'ROE', 'ROA', 'EPS',
+            'country'
+        ]
+    )
 
-
+    df['ticker'] = ticker_list
+    df['sector'] = sec_list
+    df['industry'] = ind_list
     df['Forward_PER'] = fper_list
     df['PER'] = per_list
     df['PBR'] = pbr_list
@@ -82,7 +92,6 @@ def get_fundamental(df):
     df['EPS'] = eps_list
     df['country'] = country_list
 
-    df = str2float(df)
     df.to_csv('{}/data/output/fundamental.csv'.format(os.getcwd()), encoding='utf-8-sig', index=False)
 
     return df
