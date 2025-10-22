@@ -31,26 +31,7 @@
 - **report_writer_agent** (`agents/report_writer_module.py`) : SUMMARY / COMPANIES / REFERENCE (+ APPENDIX) **Markdown** 리포트 생성
 
 ## Architecture (Mermaid)
-```mermaid
-flowchart TD
-  IN([Input: 9 Tickers + Prices(OHLCV) + (Finviz optional)])
-  SUP((supervisor_node))
-  QA[quant_node<br/>(OHLCV+Finviz → QuantScore)]
-  FR[filings_node<br/>(Web Search → Evidence)]
-  GT{{quality_gate<br/>pass or refine?}}
-  MG[[merge_node<br/>(회사별 카드 요약)]]
-  RW[report_node<br/>(Markdown Report)]
-  OUT([out/ev_report.md])
-
-  IN --> SUP
-  SUP --> QA
-  SUP --> FR
-  QA --> GT
-  FR --> GT
-  GT -- "refine (≤1)" --> FR
-  GT -- "pass" --> MG
-  MG --> RW
-  RW --> OUT
+<img width="359" height="734" alt="image" src="https://github.com/user-attachments/assets/09a248d0-65a5-4f79-958d-bc27ba0c94aa" />
 ```
 
 ---
