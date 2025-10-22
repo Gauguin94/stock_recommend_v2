@@ -1,6 +1,6 @@
 
 # EV Multi‑Agent Report Generator
-**글로벌 전기차 상장사 9개**를 대상으로, **숫자(차트·기초 재무)**와 **최신 웹 자료(공시/IR/보도자료)**를 자동 수집·분석하여 **투자 관점 리포트**를 생성하는 에이전트를 설계하고 구현
+**글로벌 전기차 상장사 n개**를 대상으로, **숫자(차트·기초 재무)**와 **최신 웹 자료(공시/IR/보도자료)**를 자동 수집·분석하여 **투자 관점 리포트**를 생성하는 에이전트를 설계하고 구현
 
 ## Overview
 
@@ -32,7 +32,6 @@
 
 ## Architecture (Mermaid)
 <img width="359" height="734" alt="image" src="https://github.com/user-attachments/assets/09a248d0-65a5-4f79-958d-bc27ba0c94aa" />
-```
 
 ---
 
